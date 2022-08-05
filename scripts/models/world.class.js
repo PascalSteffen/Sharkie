@@ -14,7 +14,10 @@ class World {
     isWin = false;
     runCollisions;
     barrierSlide;
+    inputDmg;
     backgroundMusicIsPlay;
+    firstGameStartMusic;
+    loadingInterval;
 
     coinCollecting = new Audio('audio/coin-collecting.mp3');
     sharkEat = new Audio('audio/shark-eat.mp3');
@@ -34,7 +37,9 @@ class World {
             this.setWorld();
             this.updateTakeableObjects();
             this.run();
-            this.playBackgroundMusic();
+            setTimeout(() => {
+                this.playBackgroundMusic();
+            }, 10000);
         }
     }
 
@@ -56,22 +61,22 @@ class World {
      */
     run() {
         this.runCollisions = setInterval(() => {
-            if (!this.isGameOver || !this.isWin) {
-                // Fishes & Poison & Coins & Boss & Barrier vs. Character 
-                this.checkCollisions(this.level.normalFish, 10);
-                this.checkCollisions(this.level.jellyfish, 25);
-                this.checkCollisions(this.level.poisons, 50);
-                this.checkCollisionsEndbossWithCharacter(50);
-                this.checkCollisionsCoin(this.level.coins);
-                this.checkCollisionsDMG(this.level.normalFish);
-                this.checkCollisionsDMG(this.level.jellyfish);
-                this.biteBoss(10);
+            // Fishes & Poison & Coins & Boss & Barrier vs. Character 
+            this.checkCollisions(this.level.poisons, 50);
+            this.checkCollisionsEndbossWithCharacter(50);
+            this.checkCollisionsCoin(this.level.coins);
+            this.checkCollisionsDMG(this.level.normalFish);
+            this.checkCollisionsDMG(this.level.jellyfish);
 
-                // Boss vs. Poison & NormalFish & Jellyfish
-                this.checkCollisionsBossWithNormalFish(this.level.normalFish);
-                this.checkCollisionsBossWithObjects(this.level.poisons, 20)
-                this.checkCollisionsBossWithObjects(this.level.jellyfish, 10)
-            }
+            // Boss vs. Poison & NormalFish & Jellyfish
+            this.checkCollisionsBossWithNormalFish(this.level.normalFish);
+            this.checkCollisionsBossWithObjects(this.level.poisons, 20)
+            this.checkCollisionsBossWithObjects(this.level.jellyfish, 10)
+        }, 1);
+        this.inputDmg = setInterval(() => {
+            this.checkCollisions(this.level.normalFish, 10);
+            this.checkCollisions(this.level.jellyfish, 25);
+            this.biteBoss(10);
         }, 600);
         this.barrierSlide = setInterval(() => {
             this.checkCollisionsBottomBarrierWithCharacter(this.level.barriers);
@@ -80,6 +85,7 @@ class World {
 
 
     //#################################################################################### Check character collisions ###############################################################\\
+
 
     /**
      * Check the collidation Coords from the enemies.
@@ -452,8 +458,7 @@ class World {
 
         }
 
-        clearInterval(this.runCollisions);
-        clearInterval(this.barrierSlide);
+        this.clearExtraIntervals();
         this.clearBossMovement();
         this.clearFishMovement(this.level.normalFish);
         this.clearFishMovement(this.level.jellyfish);
@@ -478,8 +483,7 @@ class World {
             }, 2000);
         }
 
-        clearInterval(this.runCollisions);
-        clearInterval(this.barrierSlide);
+        this.clearExtraIntervals();
         this.clearBossMovement();
         this.clearFishMovement(this.level.normalFish);
         this.clearFishMovement(this.level.jellyfish);
@@ -531,6 +535,13 @@ class World {
         clearInterval(this.character.characterDMG);
     }
 
+    clearExtraIntervals() {
+        clearInterval(this.runCollisions);
+        clearInterval(this.barrierSlide);
+        clearInterval(this.inputDmg);
+        clearInterval(this.firstGameStartMusic);
+    }
+
 
     /**
      * Clear all sounds from the World
@@ -561,13 +572,20 @@ class World {
         this.isGameOver = false;
         this.isWin = false;
         document.getElementById("restart").classList.add("transform");
+        document.getElementById("bossHeart").classList.add('transform');
+        document.getElementById("bossLife").classList.add('transform');
         document.getElementById("restart").classList.add("d-none");
         document.getElementById("bossHeart").classList.add('d-none');
         document.getElementById("bossLife").classList.add('d-none');
-        document.getElementById("bossHeart").classList.add('transform');
-        document.getElementById("bossLife").classList.add('transform');
+        document.getElementById("loading").classList.remove("transform");
+        document.getElementById("loading").classList.remove("d-none");
         init();
         this.clickSound.play();
+        setTimeout(() => {
+            clearInterval(this.loadingInterval);
+            document.getElementById("loading").classList.add("transform");
+            document.getElementById("loading").classList.add("d-none");
+        }, 10000);
     }
 
     comingSoon() {
@@ -578,6 +596,5 @@ class World {
         document.getElementById("gameOverText").innerHTML = "Next Level coming Soon";
         clickSound.play();
     }
-
 
 }

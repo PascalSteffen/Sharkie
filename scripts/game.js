@@ -21,17 +21,27 @@ function init() {
  * 
  */
 function startGame() {
-    document.getElementById("startGame").classList.remove("transform");
+    document.getElementById("loadingBackground").classList.remove("transform");
     document.getElementById("startBackground").classList.add("transform");
     document.getElementById("informationBackground").classList.add("transform");
-    document.getElementById("headline").classList.add("transform");
-
     setTimeout(() => {
-        document.getElementById("startGame").classList.remove("d-none");
+        document.getElementById("loadingBackground").classList.remove("d-none");
         document.getElementById("startBackground").classList.add("d-none");
         document.getElementById("informationBackground").classList.add("d-none");
-        document.getElementById("headline").classList.add("d-none");
     }, 250);
+
+    setTimeout(() => {
+        document.getElementById("loadingBackground").classList.add("transform");
+        document.getElementById("startGame").classList.remove("transform");
+        document.getElementById("headline").classList.add("transform");
+
+        setTimeout(() => {
+            document.getElementById("loadingBackground").classList.add("d-none");
+            document.getElementById("startGame").classList.remove("d-none");
+            document.getElementById("headline").classList.add("d-none");
+        }, 250);
+
+    }, 10000);
 
     init();
     clickSound.play();
@@ -44,35 +54,20 @@ function startGame() {
  * 
  */
 function information() {
-    let x = window.matchMedia("(min-width: 916px)");
-    let y = window.matchMedia("(min-height: 900px)");
-    if (x.matches && y.matches) {
-        document.getElementById("startBackground").classList.add("transform");
-        document.getElementById("informationBackground").classList.remove("transform");
-        setTimeout(() => {
-            document.getElementById("startBackground").classList.add("d-none");
-            document.getElementById("informationBackground").classList.remove("d-none");
-        }, 250);
+    document.getElementById("startBackground").classList.add("transform");
+    document.getElementById("informationBackground").classList.remove("transform");
+    document.getElementById("keyboardMoveLine").classList.remove("transform");
+    document.getElementById("keyboardAttackLine").classList.remove("transform");
+    document.getElementById("tippBtn").classList.add("transform");
+    document.getElementById("tippBtn").classList.remove("transform");
 
-    } else {
-        document.getElementById("startBackground").classList.add("transform");
-        document.getElementById("informationBackground").classList.remove("transform");
-        document.getElementById("keyboardMoveLine").classList.add("transform");
-        document.getElementById("keyboardAttackLine").classList.add("transform");
-        document.getElementById("tippBtn").classList.add("transform");
-        document.getElementById("infoText").classList.remove("transform");
-        document.getElementById("startBtn").classList.remove("transform");
-
-        setTimeout(() => {
-            document.getElementById("startBackground").classList.add("d-none");
-            document.getElementById("informationBackground").classList.remove("d-none");
-            document.getElementById("keyboardMoveLine").classList.add("d-none");
-            document.getElementById("keyboardAttackLine").classList.add("d-none");
-            document.getElementById("infoText").classList.remove("d-none");
-            document.getElementById("tippBtn").classList.add("d-none");
-            document.getElementById("startBtn").classList.remove("d-none");
-        }, 250);
-    }
+    setTimeout(() => {
+        document.getElementById("startBackground").classList.add("d-none");
+        document.getElementById("informationBackground").classList.remove("d-none");
+        document.getElementById("keyboardMoveLine").classList.remove("d-none");
+        document.getElementById("keyboardAttackLine").classList.remove("d-none");
+        document.getElementById("tippBtn").classList.remove("d-none");
+    }, 250);
 
     initLevel();
     clickSound.play();
@@ -141,4 +136,19 @@ function tipps() {
     }, 250);
 
     clickSound.play();
+}
+
+
+function showMobileKeys() {
+    document.getElementById("showKeys").classList.add("d-none");
+    document.getElementById("disableKeys").classList.remove("d-none");
+    document.getElementById("mobileKeys").classList.remove("d-none");
+}
+
+
+function disableMobileKeys() {
+    document.getElementById("showKeys").classList.remove("d-none");
+    document.getElementById("disableKeys").classList.add("d-none");
+    document.getElementById("mobileKeys").classList.add("d-none");
+
 }

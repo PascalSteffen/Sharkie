@@ -192,6 +192,17 @@ body {
     cursor: pointer;
 }
 
+.showMobileKeys {
+    position: absolute;
+    bottom: 2%;
+    right: 8%;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 
 .coin-design {
     position: absolute;
@@ -302,7 +313,8 @@ body {
 /* Start-Background */
 #startBackground,
 #informationBackground,
-#creditsBackground {
+#creditsBackground,
+#loadingBackground {
     z-index: 1;
     width: 720px;
     height: 480px;
@@ -377,17 +389,16 @@ a:hover {
 
 
 /* restart */
-.restart-background {
+.restart-background, .loading-background {
     position: absolute;
     border-radius: 20px;
     width: 720px;
     height: 480px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 1);
     z-index: 1;
     transform: scale(1);
     transition: all 225ms ease-in-out;
 }
-
 
 .restart-design,
 .next-level-design {
@@ -424,7 +435,8 @@ canvas {
     #startBackground,
     #informationBackground,
     #creditsBackground,
-    #startGame {
+    #startGame,
+    #loadingBackground {
         display: none;
     }
 
@@ -503,7 +515,8 @@ canvas {
 
     #keyboardMoveLine,
     #keyboardAttackLine,
-    #infoText {
+    #infoText,
+    #loading {
         align-items: center;
         margin: 0 !important;
     }
@@ -530,13 +543,6 @@ canvas {
 
 @media (min-width: 721px) and (min-height: 601px) {
     .no-landscape {
-        display: none;
-    }
-}
-
-
-@media (min-width: 1000px) and (min-height: 915px) {
-    #mobileKeys {
         display: none;
     }
 }

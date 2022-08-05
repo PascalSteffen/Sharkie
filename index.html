@@ -84,11 +84,25 @@
         </div>
     </div>
 
+    <!-- loading -->
+    <div id="loadingBackground" class="d-none transform">
+        <div class="flex-around">
+            <div>
+                <span id="loadingStart" class="info-text infos-responsive">World is loading ...</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Ingame Design -->
     <div id="startGame" class="position d-none transform">
         <div class="volume-design flex-center">
             <img onclick="world.clearBackgroundMusic()" id="unmute" class="img-25" src="img/unmute.png" alt="">
             <img onclick="world.playBackgroundMusic()" id="mute" class="img-25 d-none" src="img/mute.png" alt="">
+        </div>
+        <div class="showMobileKeys flex-center">
+            <img onclick="showMobileKeys()" id="showKeys" class="img-25" src="img/mobile-keys-off.png" alt="">
+            <img onclick="disableMobileKeys()" id="disableKeys" class="img-25 d-none" src="img/mobile-keys-on.png"
+                alt="">
         </div>
         <div class="coin-design flex-center">
             <span id="coins" class="text-design"></span>
@@ -108,6 +122,11 @@
                 <button onclick="world.restart()" class="btn-design">Restart</button>
             </div>
         </div>
+        <div id="loading" class="loading-background d-none transform">
+            <div class="flex-column restart-design">
+                <span id="loadingText" class="restart-text-design">New World is loading ...</span>
+            </div>
+        </div>
         <div id="nextLevel" class="restart-background d-none transform">
             <div class="flex-column next-level-design">
                 <span class="next-level-text-design">You Won!</span>
@@ -115,7 +134,7 @@
             </div>
         </div>
         <!-- Mobile Keys -->
-        <div id="mobileKeys">
+        <div id="mobileKeys" class="d-none">
             <img id="btnLeft" class="img-50 arrow-left" src="img/arrow-left.png" alt="">
             <img id="btnRight" class="img-50 arrow-right" src="img/arrow-right.png" alt="">
             <img id="btnUp" class="img-50 arrow-up" src="img/arrow-up.png" alt="">
