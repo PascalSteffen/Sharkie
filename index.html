@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharkie</title>
+    <link rel="icon" href="img/boss.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+
+</head>
+
+<body class="body-design">
+    <!-- Not in Landscape -->
+    <div class="no-landscape">
+        <img class="no-landscape-img" src="img/3. Background/Layers/5. Water/D1.png" alt="">
+        <span class="no-landscape-text">Rotate the screen to play</span>
+    </div>
+    <!-- Background -->
+    <img class="game-background" src="img/3. Background/Layers/5. Water/D1.png" alt="">
+
+    <!-- Headline -->
+    <div id="headline" class="headline">
+        <h1 class="headline-design-text">Sharkie</h1>
+        <img class="headline-img-sharkie" src="img/sharkie.png" alt="">
+    </div>
+
+    <!-- Buttons -->
+    <div id="startBackground" class="flex-center-start">
+        <button onclick="information()" class="btn-design me-5 responsive-width">Start Game</button>
+        <button onclick="credits()" class="btn-design">Credits</button>
+    </div>
+
+    <!-- Credits -->
+    <div id="creditsBackground" class="d-none transform">
+        <div id="credits" class="flex-around underline mb-3 d-none transform">
+            <div class="flex-column credits-responsive">
+                <a class="info-text" href="https://developerakademie.com/" target="_blank">Pictures</a>
+                <a class="info-text" href="https://www.flaticon.com/authors/muhammad-atho" target="_blank">Icons</a>
+                <a class="info-text" href="https://mixkit.co/free-sound-effects/" target="_blank">Sounds</a>
+            </div>
+        </div>
+        <div id="creditBtn" class="flex-center d-none transform">
+            <button onclick="goingBack()" class="btn-design">Back</button>
+        </div>
+    </div>
+
+    <!-- Information -->
+    <div id="informationBackground" class="transform d-none">
+        <div id="keyboardMoveLine" class="flex-around">
+            <div class="flex-center mb-5 infos-responsive">
+                <span class="keyboard-design me-3">W</span>
+                <span class="keyboard-design me-3">A</span>
+                <span class="keyboard-design me-3">S</span>
+                <span class="keyboard-design">D</span>
+            </div>
+            <div class="flex-center">
+                <span class="info-text infos-responsive">Move Shark</span>
+            </div>
+        </div>
+        <div id="keyboardAttackLine" class="flex-around underline mb-3">
+            <div class="flex-center">
+                <span class="keyboard-design mb-3">SPACE</span>
+            </div>
+            <div class="flex-center">
+                <span class="info-text infos-responsive">Attack</span>
+            </div>
+        </div>
+        <div id="infoText" class="flex-around underline mb-3 d-none transform">
+            <div class="flex-column">
+                <span class="info-text infos-responsive">1. The Boss dont like Poisons.</span>
+                <span class="info-text infos-responsive">2. The Boss is to strong when he is on rage.</span>
+            </div>
+        </div>
+        <div id="tippBtn" class="flex-center">
+            <button onclick="tipps()" class="btn-design">Tipps</button>
+        </div>
+        <div id="startBtn" class="flex-center d-none transform">
+            <button onclick="startGame()" class="btn-design">Start</button>
+        </div>
+    </div>
+
+    <!-- Ingame Design -->
+    <div id="startGame" class="position d-none transform">
+        <div class="volume-design flex-center">
+            <img onclick="world.clearBackgroundMusic()" id="unmute" class="img-25" src="img/unmute.png" alt="">
+            <img onclick="world.playBackgroundMusic()" id="mute" class="img-25 d-none" src="img/mute.png" alt="">
+        </div>
+        <div class="coin-design flex-center">
+            <span id="coins" class="text-design"></span>
+            <img class="img-50" src="img/4. Marcadores/green/100_ copia 6.png" alt="">
+        </div>
+        <div class="heart-design flex-center">
+            <img class="img-50" src="img/4. Marcadores/green/100_  copia 3.png" alt="">
+            <span id="heart" class="text-design-prozent">100 %</span>
+        </div>
+        <div id="bossHeart" class="boss-heart-design flex-center d-none transform">
+            <img class="img-75" src="img/boss.png" alt="">
+            <span id="bossLife" class="boss-text-design-prozent d-none transform">100 %</span>
+        </div>
+        <div id="restart" class="restart-background d-none transform">
+            <div class="flex-column restart-design">
+                <span id="gameOverText" class="restart-text-design">Game Over</span>
+                <button onclick="world.restart()" class="btn-design">Restart</button>
+            </div>
+        </div>
+        <div id="nextLevel" class="restart-background d-none transform">
+            <div class="flex-column next-level-design">
+                <span class="next-level-text-design">You Won!</span>
+                <button onclick="world.comingSoon()" class="btn-design">Next Level</button>
+            </div>
+        </div>
+        <!-- Mobile Keys -->
+        <div id="mobileKeys">
+            <img id="btnLeft" class="img-50 arrow-left" src="img/arrow-left.png" alt="">
+            <img id="btnRight" class="img-50 arrow-right" src="img/arrow-right.png" alt="">
+            <img id="btnUp" class="img-50 arrow-up" src="img/arrow-up.png" alt="">
+            <img id="btnDown" class="img-50 arrow-down" src="img/arrow-down.png" alt="">
+            <img id="btnAttack" class="img-50 arrow-attack" src="img/circle-arrows.png" alt="">
+        </div>
+        <canvas id="canvas" width="720" height="480"></canvas>
+    </div>
+
+    <script src="scripts/models/drawable-object.class.js"></script>
+    <script src="scripts/models/moveable-object.class.js"></script>
+    <script src="scripts/models/background.class.js"></script>
+    <script src="scripts/models/barriers.class.js"></script>
+    <script src="scripts/models/character.class.js"></script>
+    <script src="scripts/models/normalfish.class.js"></script>
+    <script src="scripts/models/jellyfish.class.js"></script>
+    <script src="scripts/models/coins.class.js"></script>
+    <script src="scripts/models/poisons.class.js"></script>
+    <script src="scripts/models/endboss.class.js"></script>
+    <script src="scripts/models/world.class.js"></script>
+    <script src="scripts/models/keyboard.class.js"></script>
+    <script src="scripts/models/level.class.js"></script>
+    <script src="scripts/levels/level1.js"></script>
+    <script src="scripts/game.js"></script>
+</body>
+
+</html>
