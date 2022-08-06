@@ -418,7 +418,7 @@ class World {
         this.backgroundMusicIsPlay = setInterval(() => {
             if (this.character.energie > 1) {
                 this.backgroundMusic.play();
-                this.backgroundMusic.volume = 0.5;
+                this.backgroundMusic.volume = 0.3;
             } else {
                 setTimeout(() => {
                     this.backgroundMusic.pause();
@@ -535,6 +535,11 @@ class World {
         clearInterval(this.character.characterDMG);
     }
 
+
+    /**
+     * Cleared all extra intervals.
+     * 
+     */
     clearExtraIntervals() {
         clearInterval(this.runCollisions);
         clearInterval(this.barrierSlide);
@@ -553,6 +558,10 @@ class World {
         this.hurtSound.pause();
     }
 
+    /**
+     * Music off.
+     * 
+     */
     clearBackgroundMusic() {
         this.backgroundMusic.pause();
         clearInterval(this.backgroundMusicIsPlay);
@@ -581,6 +590,7 @@ class World {
         document.getElementById("loading").classList.remove("d-none");
         init();
         this.clickSound.play();
+        this.clickSound.volume = 0.4;
         setTimeout(() => {
             clearInterval(this.loadingInterval);
             document.getElementById("loading").classList.add("transform");
@@ -588,6 +598,11 @@ class World {
         }, 10000);
     }
 
+
+    /**
+     * displays the coming soon screen.
+     * 
+     */
     comingSoon() {
         document.getElementById("nextLevel").classList.add("transform");
         document.getElementById("nextLevel").classList.add("d-none");
@@ -595,6 +610,7 @@ class World {
         document.getElementById("restart").classList.remove("d-none");
         document.getElementById("gameOverText").innerHTML = "Next Level coming Soon";
         clickSound.play();
+        this.clickSound.volume = 0.4;
     }
 
 }

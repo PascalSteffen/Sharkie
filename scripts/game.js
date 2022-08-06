@@ -45,6 +45,7 @@ function startGame() {
 
     init();
     clickSound.play();
+    clickSound.volume = 0.4;
 }
 
 
@@ -71,6 +72,7 @@ function information() {
 
     initLevel();
     clickSound.play();
+    clickSound.volume = 0.4;
 }
 
 
@@ -92,7 +94,7 @@ function credits() {
 
     initLevel();
     clickSound.play();
-
+    clickSound.volume = 0.4;
 }
 
 
@@ -113,6 +115,7 @@ function goingBack() {
     }, 250);
 
     clickSound.play();
+    clickSound.volume = 0.4;
 }
 
 
@@ -136,6 +139,7 @@ function tipps() {
     }, 250);
 
     clickSound.play();
+    clickSound.volume = 0.4;
 }
 
 

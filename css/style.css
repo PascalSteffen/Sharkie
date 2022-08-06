@@ -389,7 +389,8 @@ a:hover {
 
 
 /* restart */
-.restart-background, .loading-background {
+.restart-background,
+.loading-background {
     position: absolute;
     border-radius: 20px;
     width: 720px;
