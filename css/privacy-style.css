@@ -45,6 +45,10 @@ a {
     font-family: 'Luckiest Guy' !important;
 }
 
+.footer-container a {
+    margin: 0 16px;
+}
+
 .imprint-side {
     position: absolute;
     bottom: 0;
