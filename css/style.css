@@ -375,6 +375,10 @@ a:hover {
     border-bottom: 1px solid white;
 }
 
+.padding-right {
+    padding-right: 16px !important;
+}
+
 
 .info-text,
 .restart-text-design,
