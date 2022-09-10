@@ -26,7 +26,7 @@ class poisons extends MoveableObject {
 
     }
 
-    
+
     /**
      * displays the image animations in the interval.
      * 

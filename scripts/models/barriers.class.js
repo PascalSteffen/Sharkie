@@ -9,7 +9,7 @@ class Barriers extends MoveableObject {
         this.x = x;
         this.y = y;
 
-        if(kind == 'bottom') {
+        if (kind == 'bottom') {
             this.collidingOffsetRight = 0;
             this.collidingOffsetLeft = 75;
             this.collidingOffsetTop = -225;
